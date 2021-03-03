@@ -32,6 +32,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			if group == file.Doc {
 				continue
 			}
+		nextComment:
 			for _, comment := range group.List {
 				nlen = len(comment.Text)
 				if nlen < 3 {
@@ -41,7 +42,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				for _, directive := range directives {
 					//lint:ignore SA4017 false-positive.
 					if strings.HasPrefix(comment.Text, directive) {
-						continue
+						continue nextComment
 					}
 				}
 
