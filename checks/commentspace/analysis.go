@@ -40,7 +40,6 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				}
 				// Skip known directives.
 				for _, directive := range directives {
-					//lint:ignore SA4017 false-positive.
 					if strings.HasPrefix(comment.Text, directive) {
 						continue nextComment
 					}
