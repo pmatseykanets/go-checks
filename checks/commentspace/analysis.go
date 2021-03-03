@@ -1,7 +1,6 @@
 package commentspace
 
 import (
-	"fmt"
 	"strings"
 
 	"golang.org/x/tools/go/analysis"
@@ -46,7 +45,6 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				}
 
 				if strings.HasPrefix(comment.Text, "//") && nlen > 2 && comment.Text[2:3] != " " {
-					fmt.Println(comment.Pos(), comment.End())
 					pass.Report(analysis.Diagnostic{
 						Pos: comment.Pos(), Message: "A comment should have a leading space",
 						SuggestedFixes: []analysis.SuggestedFix{
