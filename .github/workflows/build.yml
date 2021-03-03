@@ -51,3 +51,6 @@ jobs:
     - name: Build binaries
       run: |
         go build ./cmd/commentspace
+
+    - name: Run commentspace
+      run: ./commentspace ./...
